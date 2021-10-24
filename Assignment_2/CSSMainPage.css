@@ -1,0 +1,145 @@
+body{
+    background: url("https://sncs-webdev.australiasoutheast.cloudapp.azure.com/site1015/159339/Assignment_2/Images/airport_socialdistance.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 1%;
+    overflow: visible;
+    position: center;
+    scroll-behavior: smooth;
+    font-family: "Roboto", "Lucida Handwriting", "Brush Script MT", Cursive, serif;
+
+
+}
+
+.center{
+    margin: auto;
+    width: 50%;
+    padding: 10%;
+}
+
+.CentreContent{
+    text-align:center;
+    position: relative;
+
+}
+
+.Content{
+    font-size: large;
+    position: center;
+    background-color: #6b6868;
+    opacity:0.9;
+    padding: 2%;
+    color: #ffffff;
+}
+
+.ErrorPage{
+    background: url("https://sncs-webdev.australiasoutheast.cloudapp.azure.com/site1015/159339/Assignment_2/Images/Error.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 1%;
+    overflow: visible;
+    position: center;
+    scroll-behavior: smooth;
+}
+
+.Frame{
+    background-color: #c5bfbf;
+    opacity: 0.9;
+    padding: 5%;
+    margin: 2.5% 0 2.5% 0;
+
+
+}
+
+.HorizontalBlock{
+    display:inline-block;
+
+}
+
+.horizontal-fixed{
+    width: 100%;
+    position: inherit;
+    background: #333;
+    padding: 10px 0;
+    color: #fff;
+}
+
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+	margin: .4rem 0;
+}
+
+input {
+    margin: .4rem 0;
+}
+
+
+.MainFooter{
+    bottom: 0;
+    text-align:center;
+}
+
+
+.MainHeader{
+    top: 0;
+    position: relative;
+    text-align:center;
+    opacity: 0.98;
+
+}
+
+
+.NavDiv{
+    /* navigation Background */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #544f4f;
+    margin-bottom: -1%;
+
+}
+.NavItem{
+
+    horiz-align: center;
+    padding:8px 16px;
+    float: left;
+    width:auto;
+    border:2px grey;
+    display:block;
+    outline:0;
+    vertical-align:middle;
+    overflow:hidden;
+    text-decoration:none;
+    background: #544f4f;
+    color:white;
+    text-align:center;
+    cursor:pointer;
+    white-space:nowrap
+
+}
+
+.NavItem:hover {
+    background-color: #888181;
+    text-decoration: none;
+}
+
+.NewsFeed{
+    position: center;
+    background-color: #de743a;opacity:0.9;
+    padding: 1%;
+}
+
+.TextBox{
+    height: 25px;
+    border-radius: 5px;
+    padding: 4px;
+    border: solid thin #e8bcbc;
+    margin-left: 4px;
+
+
+}

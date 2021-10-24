@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+
+<link rel="stylesheet" href="CSSMainPage.css">
+<div class= "horizontal-fixed MainHeader">
+    <h1>Welcome to Dairy Flat Airport!</h1>
+
+    <script>
+        function getTime() {
+            document.getElementById("liveTime").innerHTML = Date();
+        }
+
+        setInterval(getTime,1000);
+
+    </script>
+    <span id="liveTime" style="position:relative;left: 30%" ></span><br/><br/>
+
+
+    <div >
+        <nav class="NavDiv">
+            <a class="NavItem" href = "Index.html">Home</a>
+            <a class="NavItem" href = "Timetable.html">Timetable</a>
+            <a class="NavItem" href = "Booking.html">Booking</a>
+            <a class="NavItem" href = "ContactPage.html">Help & Support</a>
+
+        </nav>
+    </div>
+
+</div>
+
+<body>
+<script type="text/javascript" version="JavaScript1.2">
+    //<!−−------>
+document. write ("Awesome your browser supports Javascript!" );
+    //−−>
+</script> <noscript> <h2>Your Browser doesn't support JavaScript!</h2>
+</noscript>
+<br/>
+
+<div class="NewsFeed">
+    <h2>NOTICE BOARD</h2>
+    <p>To find out the current Alert Level, you can visit New Zealand <a href="https://www.covid19.govt.nz/"> Unite Against COVID-19</a> website.</p>
+
+</div>
+<!--------Display live time------------->
+
+<br/>
+<div class = "Content">
+    <h4>Historical Background</h4>
+    <p>Dairy Flat is a rural district 8 km south of Orewa in the North Island of New Zealand, 28 km north of central Auckland. Until the early 1990s most of the district was in dairy farms of 40 to 60 hectares (100 to 150 acres), but with the growth of Auckland City and the extension of the Northern Motorway into the area, these are being gradually subdivided into lifestyle blocks of around 2 to 5 hectares (5 to 12 acres), many of which are grazing sheep, horses, beef cattle or deer. Although it still retains a rural character, it is counted as part of the Auckland urban area in official statistics. </p>
+    <p>'Dairy Flat' lies within the Rodney Ward on State Highway 1 and the former State Highway 17.</p>
+    <p>There is a small village shopping centre and the Dairy Flat Primary School. A major facility is the North Shore Aerodrome owned and operated by the North Shore Aero Club. In addition to aero club and private aircraft, the field is used by Barrier Air to run a scheduled air service in passenger aircraft to Great Barrier Island, some 40 nm (75 km) offshore.</p>
+</div>
+
+<br/>
+<div >
+<div class="Content" style="background-color: #e7cf9c; color: #383535">
+    <h4  style="margin-left: 40% " >Upcoming Events in Dairy Flat</h4>
+    <a style="margin-left: 42% " href="https://www.eventfinda.co.nz/whatson/events/dairy-flat">Visit EventFinda Website</a>
+
+</div>
+</div>
+<br/>
+<script>
+    //Class that take the Coordinates of airports to calculate distances
+    class airport{
+        //let lat1 = 33.94004739295854, lon1 = 151.17514765088768, lat2 = 36.65639151487084, lon2 = 174.65451302216104;
+        name1 = null; name2 = null;
+        lat1 =0 ;lon1 = 0;lat2=0;lon2=0;
+
+        constructor(nameX,latX,lonX,nameY,latY,lonY) {
+            this.name1 = nameX;
+            this.lat1=latX;
+            this.lon1=lonX;
+            this.name2 = nameY;
+            this.lat2 = latY;
+            this.lon2=lonY;
+
+        }
+        getDistance() {
+            //lat1 = 33.94004739295854, lon1 = 151.17514765088768, lat2 = 36.65639151487084, lon2 = 174.65451302216104;
+
+            const Lat1 = this.lat1 * Math.PI/180, Lat2 = this.lat2 * Math.PI/180, dif = (this.lon2-this.lon1) * Math.PI/180, R = 6371e3;
+            const d = Math.acos( Math.sin(Lat1)*Math.sin(Lat2) + Math.cos(Lat1)*Math.cos(Lat2) * Math.cos(dif) ) * R;
+            let distance = parseInt(d/1000);
+            return distance;//Distance in km
+
+        }
+
+    }
+    airport1 = new airport("Sydney", "-33.94004739295854", "151.17514765088768", "Dairy Flat","-36.65639151487084", "174.65451302216104");
+    function getDis(){
+        document.getElementById("distance").innerHTML = "The distance between two coordinates is: "+airport1.getDistance();
+    }
+
+</script>
+<button type="button"
+        onclick="getDis()">
+    Click me to display distance between two coordinates.</button>
+
+<p id="distance">Here shows the Distance</p>
+
+
+
+
+</body>
+<footer class="horizontal-fixed MainFooter">
+    <h4>Thank you for choosing Dairy Flat.</h4>
+    <h4>Author: <a href="mailto:444283027@qq.com">Wenyi Zhang</a></h4>
+</footer>
+</html>

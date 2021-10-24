@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Help and Support</title>
+</head>
+<link rel="stylesheet" href="https://sncs-webdev.australiasoutheast.cloudapp.azure.com/site1015/159339/Assignment_2/CSSMainPage.css">
+
+<div class= "horizontal-fixed MainHeader">
+    <h1>Welcome to Dairy Flat Airport!</h1>
+    <script>
+        function getTime() {
+            document.getElementById("liveTime").innerHTML = Date();
+        }
+
+        setInterval(getTime,1000);
+
+    </script>
+    <span id="liveTime" style="position:relative;left: 30%" ></span><br/><br/>
+
+    <div>
+        <nav class="NavDiv">
+            <a class="NavItem" href = "Index.html">Home</a>
+            <a class="NavItem" href = "Timetable.html">Timetable</a>
+            <a class="NavItem" href = "Booking.html">Booking</a>
+            <a class="NavItem" href = "ContactPage.html">Help & Support</a>
+
+        </nav>
+    </div>
+
+</div>
+<body>
+<div class="Frame" >
+
+<h2 style="margin-left:20% ">Any questions please don't hesitate to contact us: </h2>
+    <br/>
+<h4 style="margin-left: 35%">NZ Contact: 0800 0000 000</h4>
+<h4 style="margin-left: 35%">Overseas: +64 000 0000 000</h4>
+
+</div>
+</body>
+<footer class="horizontal-fixed MainFooter">
+    <h4>Thank you for choosing Dairy Flat.</h4>
+    <h4>Author: <a href="mailto:444283027@qq.com">Wenyi Zhang</a></h4>
+</footer>
+</html>

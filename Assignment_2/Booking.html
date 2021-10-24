@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Page to book a flight</title>
+</head>
+<!--<link rel="stylesheet" href="CSSMainPage.css">-->
+<link rel="stylesheet" href="CSSMainPage.css">
+
+<div class= "horizontal-fixed MainHeader">
+    <h1>Welcome to Dairy Flat Airport!</h1>
+    <script>
+        function getTime() {
+            document.getElementById("liveTime").innerHTML = Date();
+        }
+
+        setInterval(getTime,1000);
+
+    </script>
+    <span id="liveTime" style="position:relative;left: 30%" ></span><br/><br/>
+
+    <div >
+        <nav class="NavDiv">
+            <a class="NavItem" href = "Index.html">Home</a>
+            <a class="NavItem" href = "Timetable.html">Timetable</a>
+            <a class="NavItem" href = "Booking.html">Booking</a>
+            <a class="NavItem" href = "ContactPage.html">Help & Support</a>
+
+        </nav>
+    </div>
+
+</div>
+
+<body>
+
+
+<div class="Frame" >
+<!------------Booking Section to access location------------------------>
+<!---------------Prompt for Login for Registered User------------------->
+<div class= "CentreContent">
+    <p style="margin-top: 20px;">Have you registered an account with us?</p>
+    <div >
+        <button onclick="window.location.href = 'Login.php';">Login</button>&nbsp  &nbsp
+        <button onclick="window.location.href = 'Register.php';">Register</button>
+
+    </div>
+<br/>
+
+</div>
+
+<div class= "CentreContent">
+    <form name="SelectFlightForm" action="Booking.php" method="post">
+        Number of Travellers: <input type="number" name="Passengers" value="1"><br/><br/>
+<!--        <p><input type="radio" id = "oneWay" name="ReturnOption" value = false >&nbsp One Way &nbsp &nbsp-->
+<!--        <input type="radio" id="return" name="ReturnOption" value="true" >&nbsp Return</p>-->
+
+        From:
+        <select name="DptAirport">
+            <option value="NZNE" selected="selected">Dairy Flat</option>
+            <option value="YSSY">Sydney</option>
+            <option value="NZRO">Rotorua</option>
+            <option value="NZCI">Chatham Island</option>
+            <option value="NZGB">Great Barrier Island</option>
+            <option value="NZTL">Lake Tekapo</option>
+        </select><br/><br/>
+        &nbsp To:
+        <select name="ArvAirport" >
+            <option value="YSSY" selected="selected">Sydney</option>
+            <option value="NZRO">Rotorua</option>
+            <option value="NZCI">Chatham Island</option>
+            <option value="NZGB">Great Barrier Island</option>
+            <option value="NZTL">Lake Tekapo</option>
+            <option value="NZNE" >Dairy Flat</option>
+
+        </select>
+        <br/>
+        <br/>
+        Depart on <input type="date" id="DepartDate" name="DepartDate" onchange="changeReturnDate()"
+               value="" min="2021-10-18" max="2022-01-31"><br/>
+        <br/>
+        Return on <input type="date" id="ReturnDate" name="ReturnDate"
+                         value="" min="2021-10-18" max="2022-01-31"> <br/>(can leave blank) <br/>
+
+        <br/>
+        <input type="submit" name="submit" value="Check" >  &nbsp  &nbsp
+
+        <button type = "reset" name = "ResetButton" value="Reset">Reset</button>
+        <br/>
+        <p id = "test1"></p>
+        <div id="returnCodes"></div>
+
+        <br/>
+
+
+
+    </form>
+    <script>
+        //Set up min date as today
+        //Max date as 1 year later
+        function FormatStartDate() {
+            //Set starting date/min date as today
+            let todayDate = new Date();
+            let year = todayDate.getFullYear();
+            let month = String(todayDate.getMonth() + 1).padStart(2, '0'); //January is 0 so need to add 1 to make it 1
+            let day = todayDate.getDate();
+            return year + "-" + month + "-" + day;
+        }
+
+        function FormatEndDate() {//Allow searching for one year max
+            let todayDate = new Date();
+            let year = todayDate.getFullYear()+1;
+            let month = String(todayDate.getMonth() + 1).padStart(2, '0'); //January is 0 so need to add 1 to make it 1
+            let day = todayDate.getDate();
+            return year + "-" + month + "-" + day;
+        }
+
+        let DDate = document.getElementById("DepartDate");
+        let RDate = document.getElementById("ReturnDate");
+        DDate.value = Date.now();
+        RDate.value = Date.now();
+        let sDate = FormatStartDate();
+        let eDate = FormatEndDate();
+        document.SelectFlightForm.DepartDate.setAttribute("min",sDate);
+        document.SelectFlightForm.DepartDate.setAttribute("max",eDate);
+
+        document.SelectFlightForm.ReturnDate.setAttribute("min",sDate);
+        document.SelectFlightForm.ReturnDate.setAttribute("max",eDate);
+
+
+
+        //Return date min will change upon Depart Date selection
+        function changeReturnDate() {
+            var departDate = document.getElementById("DepartDate").value;
+            document.getElementById("ReturnDate")['min'] = departDate;
+        }
+
+    </script>
+
+    <script>
+        //When a departure airport is selected,
+        //the return airport option with same place will be disabled
+
+
+    </script>
+    <script>
+       /*
+        let codes = "";
+        if(document.getElementById("return").checked) {
+            //Options for Return flight will appear
+            codes = "<p>From: </p><input type=\"text\" name = \"DepartAirport\" value =\"Departure Airport\">\n" +
+                "<p>To: </p><input type=\"text\" name = \"DepartAirport\" value =\"Arrival Airport\">";
+            document.getElementById("test1").innerText = "Return option is checked";
+
+        }else if (document.getElementById("oneWay").checked){
+            codes="";
+            document.getElementById("test1").innerText = "Return option is NOT checked";
+        }
+        document.getElementById("returnCodes").innerHTML = codes;
+
+        document.getElementById("arriveAirport").style.display = "";
+        window.alert("Test");
+         */
+        var radiusOptions = document.SelectFlightForm.ReturnOption;
+        let returnFlight = false;
+
+        let codes;
+        for (var i = 0; i < radiusOptions.length; i++) {
+            radiusOptions[i].onclick=function () {
+
+                returnFlight = !returnFlight;
+                window.alert("returnFlight status: "+returnFlight);
+
+                if (!returnFlight) {
+                    //If client selected OneWay flight, return flight time selection will be hidden
+                    document.getElementById("arriveAirport").style.display = "none";
+                    //window.alert("returnFlight status: "+returnFlight);
+                } else {
+                    //All other situations, always show return flight option
+                    document.getElementById("arriveAirport").style.display = "";
+                    //window.alert("returnFlight status: "+returnFlight);
+                }
+
+
+
+            }
+
+
+
+
+        }
+
+    </script>
+
+</div>
+<br>
+<br>
+<Br>
+<br>
+<br><br>
+<br>
+
+
+
+<!-----Booking Page with selected flight information -
+    user input for relevant information and
+    e details of the flight, ie price departure date/time, arrival time, etc------->
+
+<!-----once complete will show invoice page with autogenerated booking reference------->
+
+<!------Error msgs when
+            exceeding capacity
+            lacking user info
+            ------------>
+
+
+<!-----**********Booking Management*****************---
+            User can cancel flights
+            Or check flight info---->
+
+
+
+</div>
+</body>
+<footer class="horizontal-fixed MainFooter">
+    <h4>Thank you for choosing Dairy Flat.</h4>
+    <h4>Author: <a href="mailto:444283027@qq.com">Wenyi Zhang</a></h4>
+</footer>
+</html>

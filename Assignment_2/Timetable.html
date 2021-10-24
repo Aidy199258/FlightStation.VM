@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flights' Timetable</title>
+</head><link rel="stylesheet" href="CSSMainPage.css">
+
+<div class= "horizontal-fixed MainHeader">
+    <h1>Welcome to Dairy Flat Airport!</h1>
+    <script>
+        function getTime() {
+            document.getElementById("liveTime").innerHTML = Date();
+        }
+
+        setInterval(getTime,1000);
+
+    </script>
+    <span id="liveTime" style="position:relative;left: 30%" ></span><br/><br/>
+
+    <div>
+        <nav class="NavDiv">
+            <a class="NavItem" href = "Index.html">Home</a>
+            <a class="NavItem" href = "Timetable.html">Timetable</a>
+            <a class="NavItem" href = "Booking.html">Booking</a>
+            <a class="NavItem" href = "ContactPage.html">Help & Support</a>
+
+        </nav>
+    </div>
+
+</div>
+<body>
+
+<div class="Frame" >
+<div class="CentreContent" style="margin-top: -2%">
+    <h1 >Flights Timetable</h1>
+    <button style="margin-top: -15%" onclick="window.location.href = 'Timetable.php';">Today's Timetable</button>
+
+</div>
+
+
+
+<!-----***********Display selected date's Flights' Timetable*************
+            User to select a date
+            Flight info will display for selected date -
+                Flight code, departure city/arrival city, time, arrival time,------->
+
+<div class="center" style="margin-top: -10%">
+    <p class="center">Check flights on a different date:</p>
+<form class="center" style="margin-top: -10%" name = "selectDateForm" action="Timetable.php" method="post">
+    &nbsp  &nbsp &nbsp  &nbsp
+    <input type="date" id="SelectedDate" name="SelectedDate"
+           value="" min="2021-09-06" max="2022-01-31">
+    <input type="submit" name="submit" value="Check" >
+    <p id="test"></p>
+</form><br/>
+</div>
+<script>
+    //Set up min date as today
+    //Max date as 1 year later
+    function FormatStartDate() {
+        //Set starting date/min date as today
+        let todayDate = new Date();
+        let year = todayDate.getFullYear();
+        let month = String(todayDate.getMonth() + 1).padStart(2, '0'); //January is 0 so need to add 1 to make it 1
+        let day = todayDate.getDate();
+        return year + "-" + month + "-" + day;
+    }
+
+    function FormatEndDate() {//Allow searching for one year max
+        let todayDate = new Date();
+        let year = todayDate.getFullYear()+1;
+        let month = String(todayDate.getMonth() + 1).padStart(2, '0'); //January is 0 so need to add 1 to make it 1
+        let day = todayDate.getDate();
+        return year + "-" + month + "-" + day;
+    }
+
+    let date = document.getElementById("SelectedDate");
+    date.value = Date.now();
+    //document.getElementById("test").innerText = "date.value: "+FormatStartDate();
+    let sDate = FormatStartDate();
+    let eDate = FormatEndDate();
+    //document.write(sDate);//Test start date
+    //document.write(eDate);//Test end date
+    document.selectDateForm.SelectedDate.setAttribute("min",sDate);
+    document.selectDateForm.SelectedDate.setAttribute("max",eDate);
+    //document.getElementById("test").innerText = "Codes completed: "+"sDate: "+sDate+"; eDate: "+eDate;
+
+
+
+</script>
+
+</div>
+
+<!-----Button Click for selecting a flight for booking------->
+
+
+
+</body>
+<footer class="horizontal-fixed MainFooter">
+    <h4>Thank you for choosing Dairy Flat.</h4>
+    <h4>Author: <a href="mailto:444283027@qq.com">Wenyi Zhang</a></h4>
+</footer>
+</html>
